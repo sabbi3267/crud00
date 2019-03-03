@@ -12,6 +12,20 @@ class Customer {
     private $title = "Customer";
     private $tableName = "customers";
     
+	/*
+     * This method displays the create page form, 
+     * - Input: click incedent
+     * - Processing: process HTML code
+     * - Output: HTML code for create page
+     * - Precondition: Public variables set (name, email, mobile)
+     *   and database connection variables are set in datase.php.
+     *   Note that $id will NOT be set because the record 
+     *   will be a new record so the SQL database will "auto-number"
+     * - Postcondition: New record is added to the database table, 
+     *   and user is redirected to the List screen (if no errors), 
+     *   or Create form (if errors)
+     */
+    
     function create_record() { // display "create" form
         $this->generate_html_top (1);
         $this->generate_form_group("name", $this->nameError, $this->name, "autofocus");
@@ -20,6 +34,22 @@ class Customer {
         $this->generate_html_bottom (1);
     } // end function create_record()
     
+	/*
+     * This method inserts one record into the table, 
+     * and redirects user to List, IF user input is valid, 
+     * OTHERWISE it redirects user back to Create form, with errors
+     * - Input: user data from Create form
+     * - Processing: INSERT (SQL)
+     * - Output: None (This method does not generate HTML code,
+     *   it only changes the content of the database)
+     * - Precondition: Public variables set (name, email, mobile)
+     *   and database connection variables are set in datase.php.
+     *   Note that $id will NOT be set because the record 
+     *   will be a new record so the SQL database will "auto-number"
+     * - Postcondition: New record is added to the database table, 
+     *   and user is redirected to the List screen (if no errors), 
+     *   or Create form (if errors)
+     */
     function read_record($id) { // display "read" form
         $this->select_db_record($id);
         $this->generate_html_top(2);
@@ -29,6 +59,22 @@ class Customer {
         $this->generate_html_bottom(2);
     } // end function read_record()
     
+	/*
+     * This method inserts one record into the table, 
+     * and redirects user to List, IF user input is valid, 
+     * OTHERWISE it redirects user back to Create form, with errors
+     * - Input: user data from Create form
+     * - Processing: INSERT (SQL)
+     * - Output: None (This method does not generate HTML code,
+     *   it only changes the content of the database)
+     * - Precondition: Public variables set (name, email, mobile)
+     *   and database connection variables are set in datase.php.
+     *   Note that $id will NOT be set because the record 
+     *   will be a new record so the SQL database will "auto-number"
+     * - Postcondition: New record is added to the database table, 
+     *   and user is redirected to the List screen (if no errors), 
+     *   or Create form (if errors)
+     */
     function update_record($id) { // display "update" form
         if($this->noerrors) $this->select_db_record($id);
         $this->generate_html_top(3, $id);
@@ -38,6 +84,22 @@ class Customer {
         $this->generate_html_bottom(3);
     } // end function update_record()
     
+	/*
+     * This method inserts one record into the table, 
+     * and redirects user to List, IF user input is valid, 
+     * OTHERWISE it redirects user back to Create form, with errors
+     * - Input: user data from Create form
+     * - Processing: INSERT (SQL)
+     * - Output: None (This method does not generate HTML code,
+     *   it only changes the content of the database)
+     * - Precondition: Public variables set (name, email, mobile)
+     *   and database connection variables are set in datase.php.
+     *   Note that $id will NOT be set because the record 
+     *   will be a new record so the SQL database will "auto-number"
+     * - Postcondition: New record is added to the database table, 
+     *   and user is redirected to the List screen (if no errors), 
+     *   or Create form (if errors)
+     */
     function delete_record($id) { // display "read" form
         $this->select_db_record($id);
         $this->generate_html_top(4, $id);
@@ -81,6 +143,23 @@ class Customer {
         }
     } // end function insert_db_record
     
+	/*
+     * This method inserts one record into the table, 
+     * and redirects user to List, IF user input is valid, 
+     * OTHERWISE it redirects user back to Create form, with errors
+     * - Input: user data from Create form
+     * - Processing: INSERT (SQL)
+     * - Output: None (This method does not generate HTML code,
+     *   it only changes the content of the database)
+     * - Precondition: Public variables set (name, email, mobile)
+     *   and database connection variables are set in datase.php.
+     *   Note that $id will NOT be set because the record 
+     *   will be a new record so the SQL database will "auto-number"
+     * - Postcondition: New record is added to the database table, 
+     *   and user is redirected to the List screen (if no errors), 
+     *   or Create form (if errors)
+     */
+	 
     private function select_db_record($id) {
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -94,6 +173,22 @@ class Customer {
         $this->mobile = $data['mobile'];
     } // function select_db_record()
     
+	/*
+     * This method inserts one record into the table, 
+     * and redirects user to List, IF user input is valid, 
+     * OTHERWISE it redirects user back to Create form, with errors
+     * - Input: user data from Create form
+     * - Processing: INSERT (SQL)
+     * - Output: None (This method does not generate HTML code,
+     *   it only changes the content of the database)
+     * - Precondition: Public variables set (name, email, mobile)
+     *   and database connection variables are set in datase.php.
+     *   Note that $id will NOT be set because the record 
+     *   will be a new record so the SQL database will "auto-number"
+     * - Postcondition: New record is added to the database table, 
+     *   and user is redirected to the List screen (if no errors), 
+     *   or Create form (if errors)
+     */
     function update_db_record ($id) {
         $this->id = $id;
         if ($this->fieldsAllValid()) {
@@ -112,6 +207,22 @@ class Customer {
         }
     } // end function update_db_record 
     
+	/*
+     * This method inserts one record into the table, 
+     * and redirects user to List, IF user input is valid, 
+     * OTHERWISE it redirects user back to Create form, with errors
+     * - Input: user data from Create form
+     * - Processing: INSERT (SQL)
+     * - Output: None (This method does not generate HTML code,
+     *   it only changes the content of the database)
+     * - Precondition: Public variables set (name, email, mobile)
+     *   and database connection variables are set in datase.php.
+     *   Note that $id will NOT be set because the record 
+     *   will be a new record so the SQL database will "auto-number"
+     * - Postcondition: New record is added to the database table, 
+     *   and user is redirected to the List screen (if no errors), 
+     *   or Create form (if errors)
+     */
     function delete_db_record($id) {
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -122,6 +233,22 @@ class Customer {
         header("Location: $this->tableName.php");
     } // end function delete_db_record()
     
+	/*
+     * This method inserts one record into the table, 
+     * and redirects user to List, IF user input is valid, 
+     * OTHERWISE it redirects user back to Create form, with errors
+     * - Input: user data from Create form
+     * - Processing: INSERT (SQL)
+     * - Output: None (This method does not generate HTML code,
+     *   it only changes the content of the database)
+     * - Precondition: Public variables set (name, email, mobile)
+     *   and database connection variables are set in datase.php.
+     *   Note that $id will NOT be set because the record 
+     *   will be a new record so the SQL database will "auto-number"
+     * - Postcondition: New record is added to the database table, 
+     *   and user is redirected to the List screen (if no errors), 
+     *   or Create form (if errors)
+     */
     private function generate_html_top ($fun, $id=null) {
         switch ($fun) {
             case 1: // create
@@ -165,6 +292,22 @@ class Customer {
                     ";
     } // end function generate_html_top()
     
+	/*
+     * This method inserts one record into the table, 
+     * and redirects user to List, IF user input is valid, 
+     * OTHERWISE it redirects user back to Create form, with errors
+     * - Input: user data from Create form
+     * - Processing: INSERT (SQL)
+     * - Output: None (This method does not generate HTML code,
+     *   it only changes the content of the database)
+     * - Precondition: Public variables set (name, email, mobile)
+     *   and database connection variables are set in datase.php.
+     *   Note that $id will NOT be set because the record 
+     *   will be a new record so the SQL database will "auto-number"
+     * - Postcondition: New record is added to the database table, 
+     *   and user is redirected to the List screen (if no errors), 
+     *   or Create form (if errors)
+     */
     private function generate_html_bottom ($fun) {
         switch ($fun) {
             case 1: // create
@@ -198,6 +341,22 @@ class Customer {
                     ";
     } // end function generate_html_bottom()
     
+	/*
+     * This method inserts one record into the table, 
+     * and redirects user to List, IF user input is valid, 
+     * OTHERWISE it redirects user back to Create form, with errors
+     * - Input: user data from Create form
+     * - Processing: INSERT (SQL)
+     * - Output: None (This method does not generate HTML code,
+     *   it only changes the content of the database)
+     * - Precondition: Public variables set (name, email, mobile)
+     *   and database connection variables are set in datase.php.
+     *   Note that $id will NOT be set because the record 
+     *   will be a new record so the SQL database will "auto-number"
+     * - Postcondition: New record is added to the database table, 
+     *   and user is redirected to the List screen (if no errors), 
+     *   or Create form (if errors)
+     */
     private function generate_form_group ($label, $labelError, $val, $modifier="") {
         echo "<div class='form-group'";
         echo !empty($labelError) ? ' alert alert-danger ' : '';
@@ -221,6 +380,22 @@ class Customer {
         echo "</div>"; // end div: class='form-group'
     } // end function generate_form_group()
     
+	/*
+     * This method inserts one record into the table, 
+     * and redirects user to List, IF user input is valid, 
+     * OTHERWISE it redirects user back to Create form, with errors
+     * - Input: user data from Create form
+     * - Processing: INSERT (SQL)
+     * - Output: None (This method does not generate HTML code,
+     *   it only changes the content of the database)
+     * - Precondition: Public variables set (name, email, mobile)
+     *   and database connection variables are set in datase.php.
+     *   Note that $id will NOT be set because the record 
+     *   will be a new record so the SQL database will "auto-number"
+     * - Postcondition: New record is added to the database table, 
+     *   and user is redirected to the List screen (if no errors), 
+     *   or Create form (if errors)
+     */
     private function fieldsAllValid () {
         $valid = true;
         if (empty($this->name)) {
@@ -242,6 +417,22 @@ class Customer {
         return $valid;
     } // end function fieldsAllValid() 
     
+	/*
+     * This method inserts one record into the table, 
+     * and redirects user to List, IF user input is valid, 
+     * OTHERWISE it redirects user back to Create form, with errors
+     * - Input: user data from Create form
+     * - Processing: INSERT (SQL)
+     * - Output: None (This method does not generate HTML code,
+     *   it only changes the content of the database)
+     * - Precondition: Public variables set (name, email, mobile)
+     *   and database connection variables are set in datase.php.
+     *   Note that $id will NOT be set because the record 
+     *   will be a new record so the SQL database will "auto-number"
+     * - Postcondition: New record is added to the database table, 
+     *   and user is redirected to the List screen (if no errors), 
+     *   or Create form (if errors)
+     */
     function list_records() {
         echo "<!DOCTYPE html>
         <html>
@@ -256,7 +447,10 @@ class Customer {
         echo "
             </head>
             <body>
-                <a href='https://github.com/cis355/PhpProject1' target='_blank'>Github</a><br />
+               <a button type='submit' class='btn btn-success'href='https://github.com/sabbi3267/crud00' target='_blank'>Github</a><br />
+				<a button type='submit' class='btn btn-success'href='http://csis.svsu.edu/~nalam/cis355/crudoo/uml' target='_blank'>Uml</a><br />
+				
+				<a button type='submit' class='btn btn-success' href='http://csis.svsu.edu/~nalam/cis355/crudoo/ufg' target='_blank'>User Flow Diagram</a><br />
                 <div class='container'>
                     <p class='row'>
                         <h3>$this->title" . "s" . "</h3>
