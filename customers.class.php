@@ -17,6 +17,8 @@ class Customer {
      * - Input: click incedent
      * - Processing: process HTML code
      * - Output: HTML code for create page
+     * - Pre-condition: If there is nothing in the list takes it to it this page automatically
+     * - Post-conditon: After the input goes back to customers.php
      */
     
     function create_record() { // display "create" form
@@ -32,6 +34,8 @@ class Customer {
      * - Input: click incedent
      * - Processing: process HTML code
      * - Output: HTML code for display page
+     * - Pre-condition: If there is nothing in the list wouldnot show the button
+     * - Post-conditon: The back button would take back to main page
      */
     function read_record($id) { // display "read" form
         $this->select_db_record($id);
@@ -47,6 +51,8 @@ class Customer {
      * - Input: click incedent
      * - Processing: process HTML code
      * - Output: HTML code for update page
+     * - Pre-condition: If there is nothing in the list takes it to it this page automatically
+     * - Post-conditon: After the input goes back to customers.php (main page)
      */
     function update_record($id) { // display "update" form
         if($this->noerrors) $this->select_db_record($id);
@@ -62,6 +68,8 @@ class Customer {
      * - Input: click incedent
      * - Processing: process HTML code
      * - Output: HTML code for delete page
+     * - Pre-condition: If there is nothing in the list the button wouldnt showup
+     * - Post-conditon: After the input goes back to customers.php
      */
     function delete_record($id) { // display "read" form
         $this->select_db_record($id);
@@ -113,11 +121,7 @@ class Customer {
      * - Output:fills up the data fields in the form
      * - Precondition: Public variables set (name, email, mobile)
      *   and database connection variables are set in datase.php.
-     *   Note that $id will NOT be set because the record 
-     *   will be a new record so the SQL database will "auto-number"
-     * - Postcondition: New record is added to the database table, 
-     *   and user is redirected to the List screen (if no errors), 
-     *   or Create form (if errors)
+     * - Postcondition: Records are selected and inserted into the data fields of the page
      */
 	 
     private function select_db_record($id) {
@@ -143,11 +147,7 @@ class Customer {
      *   it only changes the content of the database)
      * - Precondition: Public variables set (name, email, mobile)
      *   and database connection variables are set in datase.php.
-     *   Note that $id will NOT be set because the record 
-     *   will be a new record so the SQL database will "auto-number"
-     * - Postcondition: New record is added to the database table, 
-     *   and user is redirected to the List screen (if no errors), 
-     *   or Create form (if errors)
+     * - Postcondition: Any changes made are updated into the database and sends back to main page
      */
     function update_db_record ($id) {
         $this->id = $id;
@@ -177,11 +177,8 @@ class Customer {
      *   it only changes the content of the database)
      * - Precondition: Public variables set (name, email, mobile)
      *   and database connection variables are set in datase.php.
-     *   Note that $id will NOT be set because the record 
-     *   will be a new record so the SQL database will "auto-number"
-     * - Postcondition: New record is added to the database table, 
+     * - Postcondition: The record is removed from the database table, 
      *   and user is redirected to the List screen (if no errors), 
-     *   or Create form (if errors)
      */
     function delete_db_record($id) {
         $pdo = Database::connect();
@@ -195,9 +192,11 @@ class Customer {
     
 	/*
      * This method generates the buttons to act on a list,
-     * - Input: click event
-     * - Processing: INSERT (SQL)
-     * - Output: initiated different functions
+     * - Input: opening the home page
+     * - Processing: php
+     * - Output: creates the button to redirect to pages
+     * - Pre-condition: If there are data in the database would create a table with the list
+     * - Post-conditon: displays all the lists in the database in the table and the buttons for CRUD
      */
     private function generate_html_top ($fun, $id=null) {
         switch ($fun) {
@@ -245,7 +244,10 @@ class Customer {
 	/*
      * This method inserts generated the button the create, update and delete forms, 
      * - Input: click event
-     * - Output: able to perform the funtions of respective the tasks
+     * - Processing: php
+     * - Output: creats the buttons in the respective CRUD pages
+     * - Pre-condition: If there are no data then would show up at the create page
+     * - Post-conditon: displays the buttons for CRUD pages
      */
     private function generate_html_bottom ($fun) {
         switch ($fun) {
@@ -283,8 +285,10 @@ class Customer {
 	/*
      * This method generates the label for the tables, 
      * - Input: opening the page
-     * - Processing: INSERT (SQL)
-     * - Output: sets the table names
+     * - Processing: php
+     * - Output: creates the labes for the table
+     * - Pre-condition: If there are data in the database would create a table labels
+     * - Post-conditon: displays the table labels
      */
     private function generate_form_group ($label, $labelError, $val, $modifier="") {
         echo "<div class='form-group'";
@@ -312,8 +316,10 @@ class Customer {
 	/*
      * This method checks if all the fields are valid
      * - Input: name, email and mobile number
-     * - Processing: checks fields values with type
-     * - output : show message on the data field
+     * - Processing: php
+     * - Output: checks if they are valid
+     * - Pre-condition: Data type has to be same sathe type chosen for type checking
+     * - Post-conditon: If the type is valid the redirect the funciton as valid
      */
     private function fieldsAllValid () {
         $valid = true;
