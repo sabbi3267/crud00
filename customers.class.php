@@ -17,13 +17,6 @@ class Customer {
      * - Input: click incedent
      * - Processing: process HTML code
      * - Output: HTML code for create page
-     * - Precondition: Public variables set (name, email, mobile)
-     *   and database connection variables are set in datase.php.
-     *   Note that $id will NOT be set because the record 
-     *   will be a new record so the SQL database will "auto-number"
-     * - Postcondition: New record is added to the database table, 
-     *   and user is redirected to the List screen (if no errors), 
-     *   or Create form (if errors)
      */
     
     function create_record() { // display "create" form
@@ -35,20 +28,10 @@ class Customer {
     } // end function create_record()
     
 	/*
-     * This method inserts one record into the table, 
-     * and redirects user to List, IF user input is valid, 
-     * OTHERWISE it redirects user back to Create form, with errors
-     * - Input: user data from Create form
-     * - Processing: INSERT (SQL)
-     * - Output: None (This method does not generate HTML code,
-     *   it only changes the content of the database)
-     * - Precondition: Public variables set (name, email, mobile)
-     *   and database connection variables are set in datase.php.
-     *   Note that $id will NOT be set because the record 
-     *   will be a new record so the SQL database will "auto-number"
-     * - Postcondition: New record is added to the database table, 
-     *   and user is redirected to the List screen (if no errors), 
-     *   or Create form (if errors)
+     * This method displays the read page form, 
+     * - Input: click incedent
+     * - Processing: process HTML code
+     * - Output: HTML code for display page
      */
     function read_record($id) { // display "read" form
         $this->select_db_record($id);
@@ -60,20 +43,10 @@ class Customer {
     } // end function read_record()
     
 	/*
-     * This method inserts one record into the table, 
-     * and redirects user to List, IF user input is valid, 
-     * OTHERWISE it redirects user back to Create form, with errors
-     * - Input: user data from Create form
-     * - Processing: INSERT (SQL)
-     * - Output: None (This method does not generate HTML code,
-     *   it only changes the content of the database)
-     * - Precondition: Public variables set (name, email, mobile)
-     *   and database connection variables are set in datase.php.
-     *   Note that $id will NOT be set because the record 
-     *   will be a new record so the SQL database will "auto-number"
-     * - Postcondition: New record is added to the database table, 
-     *   and user is redirected to the List screen (if no errors), 
-     *   or Create form (if errors)
+     * This method displays the update page form, 
+     * - Input: click incedent
+     * - Processing: process HTML code
+     * - Output: HTML code for update page
      */
     function update_record($id) { // display "update" form
         if($this->noerrors) $this->select_db_record($id);
@@ -85,20 +58,10 @@ class Customer {
     } // end function update_record()
     
 	/*
-     * This method inserts one record into the table, 
-     * and redirects user to List, IF user input is valid, 
-     * OTHERWISE it redirects user back to Create form, with errors
-     * - Input: user data from Create form
-     * - Processing: INSERT (SQL)
-     * - Output: None (This method does not generate HTML code,
-     *   it only changes the content of the database)
-     * - Precondition: Public variables set (name, email, mobile)
-     *   and database connection variables are set in datase.php.
-     *   Note that $id will NOT be set because the record 
-     *   will be a new record so the SQL database will "auto-number"
-     * - Postcondition: New record is added to the database table, 
-     *   and user is redirected to the List screen (if no errors), 
-     *   or Create form (if errors)
+     * This method displays the delete page form, 
+     * - Input: click incedent
+     * - Processing: process HTML code
+     * - Output: HTML code for delete page
      */
     function delete_record($id) { // display "read" form
         $this->select_db_record($id);
@@ -144,13 +107,10 @@ class Customer {
     } // end function insert_db_record
     
 	/*
-     * This method inserts one record into the table, 
-     * and redirects user to List, IF user input is valid, 
-     * OTHERWISE it redirects user back to Create form, with errors
-     * - Input: user data from Create form
-     * - Processing: INSERT (SQL)
-     * - Output: None (This method does not generate HTML code,
-     *   it only changes the content of the database)
+     * This method displays the selected input in to a form,  
+     * - Input: click event
+     * - Processing: select (SQL)
+     * - Output:fills up the data fields in the form
      * - Precondition: Public variables set (name, email, mobile)
      *   and database connection variables are set in datase.php.
      *   Note that $id will NOT be set because the record 
@@ -174,11 +134,11 @@ class Customer {
     } // function select_db_record()
     
 	/*
-     * This method inserts one record into the table, 
+     * This method updates one record into the table, 
      * and redirects user to List, IF user input is valid, 
-     * OTHERWISE it redirects user back to Create form, with errors
-     * - Input: user data from Create form
-     * - Processing: INSERT (SQL)
+     * OTHERWISE it redirects user back to update form, with errors
+     * - Input: user data from update form
+     * - Processing: update (SQL)
      * - Output: None (This method does not generate HTML code,
      *   it only changes the content of the database)
      * - Precondition: Public variables set (name, email, mobile)
@@ -208,11 +168,11 @@ class Customer {
     } // end function update_db_record 
     
 	/*
-     * This method inserts one record into the table, 
+     * This method deletes one record into the table, 
      * and redirects user to List, IF user input is valid, 
-     * OTHERWISE it redirects user back to Create form, with errors
+     * OTHERWISE it redirects user back to delete form, with errors
      * - Input: user data from Create form
-     * - Processing: INSERT (SQL)
+     * - Processing: delete (SQL)
      * - Output: None (This method does not generate HTML code,
      *   it only changes the content of the database)
      * - Precondition: Public variables set (name, email, mobile)
@@ -234,20 +194,10 @@ class Customer {
     } // end function delete_db_record()
     
 	/*
-     * This method inserts one record into the table, 
-     * and redirects user to List, IF user input is valid, 
-     * OTHERWISE it redirects user back to Create form, with errors
-     * - Input: user data from Create form
+     * This method generates the buttons to act on a list,
+     * - Input: click event
      * - Processing: INSERT (SQL)
-     * - Output: None (This method does not generate HTML code,
-     *   it only changes the content of the database)
-     * - Precondition: Public variables set (name, email, mobile)
-     *   and database connection variables are set in datase.php.
-     *   Note that $id will NOT be set because the record 
-     *   will be a new record so the SQL database will "auto-number"
-     * - Postcondition: New record is added to the database table, 
-     *   and user is redirected to the List screen (if no errors), 
-     *   or Create form (if errors)
+     * - Output: initiated different functions
      */
     private function generate_html_top ($fun, $id=null) {
         switch ($fun) {
@@ -293,20 +243,9 @@ class Customer {
     } // end function generate_html_top()
     
 	/*
-     * This method inserts one record into the table, 
-     * and redirects user to List, IF user input is valid, 
-     * OTHERWISE it redirects user back to Create form, with errors
-     * - Input: user data from Create form
-     * - Processing: INSERT (SQL)
-     * - Output: None (This method does not generate HTML code,
-     *   it only changes the content of the database)
-     * - Precondition: Public variables set (name, email, mobile)
-     *   and database connection variables are set in datase.php.
-     *   Note that $id will NOT be set because the record 
-     *   will be a new record so the SQL database will "auto-number"
-     * - Postcondition: New record is added to the database table, 
-     *   and user is redirected to the List screen (if no errors), 
-     *   or Create form (if errors)
+     * This method inserts generated the button the create, update and delete forms, 
+     * - Input: click event
+     * - Output: able to perform the funtions of respective the tasks
      */
     private function generate_html_bottom ($fun) {
         switch ($fun) {
@@ -342,20 +281,10 @@ class Customer {
     } // end function generate_html_bottom()
     
 	/*
-     * This method inserts one record into the table, 
-     * and redirects user to List, IF user input is valid, 
-     * OTHERWISE it redirects user back to Create form, with errors
-     * - Input: user data from Create form
+     * This method generates the label for the tables, 
+     * - Input: opening the page
      * - Processing: INSERT (SQL)
-     * - Output: None (This method does not generate HTML code,
-     *   it only changes the content of the database)
-     * - Precondition: Public variables set (name, email, mobile)
-     *   and database connection variables are set in datase.php.
-     *   Note that $id will NOT be set because the record 
-     *   will be a new record so the SQL database will "auto-number"
-     * - Postcondition: New record is added to the database table, 
-     *   and user is redirected to the List screen (if no errors), 
-     *   or Create form (if errors)
+     * - Output: sets the table names
      */
     private function generate_form_group ($label, $labelError, $val, $modifier="") {
         echo "<div class='form-group'";
@@ -381,20 +310,10 @@ class Customer {
     } // end function generate_form_group()
     
 	/*
-     * This method inserts one record into the table, 
-     * and redirects user to List, IF user input is valid, 
-     * OTHERWISE it redirects user back to Create form, with errors
-     * - Input: user data from Create form
-     * - Processing: INSERT (SQL)
-     * - Output: None (This method does not generate HTML code,
-     *   it only changes the content of the database)
-     * - Precondition: Public variables set (name, email, mobile)
-     *   and database connection variables are set in datase.php.
-     *   Note that $id will NOT be set because the record 
-     *   will be a new record so the SQL database will "auto-number"
-     * - Postcondition: New record is added to the database table, 
-     *   and user is redirected to the List screen (if no errors), 
-     *   or Create form (if errors)
+     * This method checks if all the fields are valid
+     * - Input: name, email and mobile number
+     * - Processing: checks fields values with type
+     * - output : show message on the data field
      */
     private function fieldsAllValid () {
         $valid = true;
@@ -418,20 +337,11 @@ class Customer {
     } // end function fieldsAllValid() 
     
 	/*
-     * This method inserts one record into the table, 
-     * and redirects user to List, IF user input is valid, 
-     * OTHERWISE it redirects user back to Create form, with errors
-     * - Input: user data from Create form
-     * - Processing: INSERT (SQL)
-     * - Output: None (This method does not generate HTML code,
-     *   it only changes the content of the database)
-     * - Precondition: Public variables set (name, email, mobile)
-     *   and database connection variables are set in datase.php.
-     *   Note that $id will NOT be set because the record 
-     *   will be a new record so the SQL database will "auto-number"
-     * - Postcondition: New record is added to the database table, 
-     *   and user is redirected to the List screen (if no errors), 
-     *   or Create form (if errors)
+     * This method list all the records there is in the database 
+     * - Input: loading the page
+     * - Processing: query (SQL)
+     * - Output: displays all the records in the database in the table
+     
      */
     function list_records() {
         echo "<!DOCTYPE html>
