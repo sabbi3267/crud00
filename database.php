@@ -13,6 +13,14 @@ class Database {
 		exit('Init function is not allowed');
 	}
 	
+	/*
+     * This method connects to the databse 
+     * - Input: infromation for the data base
+     * - Processing: php
+     * - Output: establishes connection with the database
+     * - Precondition:  existing database 
+     * - Postcondition: connects to the database or dies
+     */
 	public static function connect()
 	{
        if ( null == self::$cont )
@@ -29,6 +37,9 @@ class Database {
        return self::$cont;
 	}
 	
+	/*
+     * This method disconnects to the database, 
+     */
 	public static function disconnect()
 	{
 		self::$cont = null;
