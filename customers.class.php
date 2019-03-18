@@ -1,3 +1,4 @@
+// code partially copied from https://csis.svsu.edu/~gpcorser/cis355wi19/crud_oo_complete
 <?php
 
 class Customer { 
@@ -21,7 +22,7 @@ class Customer {
      * - Post-conditon: After the input goes back to customers.php
      */
     
-    function create_record() { // display "create" form
+    function create_record() { // display "create" form 
         $this->generate_html_top (1);
         $this->generate_form_group("name", $this->nameError, $this->name, "autofocus");
         $this->generate_form_group("email", $this->emailError, $this->email);
